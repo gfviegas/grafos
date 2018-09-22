@@ -1,5 +1,11 @@
 from setuptools import setup
 
+
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
+
 setup(
     name='graph',
     version='0.1',
@@ -12,5 +18,6 @@ setup(
     install_requires=[
         'markdown',
     ],
+    include_package_data=True,
     zip_safe=False
 )
