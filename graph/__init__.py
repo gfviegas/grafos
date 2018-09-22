@@ -1,2 +1,1 @@
-def xesque():
-    return ('Teste')
+from .details import msg

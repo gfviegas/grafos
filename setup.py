@@ -9,5 +9,8 @@ setup(
     author_email='gustavo.viegas@ufv.br lucas.duarte@ufv.br',
     license='Apache',
     packages=['graph'],
+    install_requires=[
+        'markdown',
+    ],
     zip_safe=False
 )

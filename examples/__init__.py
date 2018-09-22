@@ -1,3 +1,3 @@
 import graph
 
-print(graph.xesque())
+print(graph.msg())
