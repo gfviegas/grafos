@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  runner:
+    image: python:3
+    container_name: graph-runner
+    working_dir: /var/www/app
+    command: bash -c ''
+    volumes:
+      - ./:/var/www/app
+  test:
+    image: python:3
+    container_name: graph-runner
+    working_dir: /var/www/app
+    command: bash -c ''
+    volumes:
+      - ./:/var/www/app
