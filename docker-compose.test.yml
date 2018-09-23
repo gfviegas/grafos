@@ -12,6 +12,6 @@ services:
     image: python:3
     container_name: graph-runner
     working_dir: /var/www/app
-    command: bash -c 'python setup.py test'
+    command: bash -c ''
     volumes:
       - ./:/var/www/app
