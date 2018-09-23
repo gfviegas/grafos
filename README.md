@@ -23,3 +23,7 @@ python setup.py develop
 
 ### Pacotes externos
 Ao utilizar um pacote externo deve-se adicioná-lo no install_requires que está no setup.py
+
+
+## Executando Testes
+docker-compose -p tests run --rm test
