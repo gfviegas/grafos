@@ -1,14 +1,9 @@
 # graph
-Python Graph Library
+Python Graph Library 0.1
 
 ## Subir container e acessá-lo
 ```bash
 docker-compose run runner bash
-```
-
-## Instalar pacote localmente
-```bash
-pip install .
 ```
 
 ## Instalar pacote localmente e atualizar mudanças
