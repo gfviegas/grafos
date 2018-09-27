@@ -2,6 +2,8 @@ def generateValueMatrix(self):
     self.openFile()
     self.readNodesAmount()
 
+    if (not self.nodesAmount or self.nodesAmount <= 0):
+        raise Exception('nodesAmountNotDefined')
     # Inicializa a matriz com 0s
     self.valueMatrix = [[0 for x in range(self.nodesAmount)]
                         for y in range(self.nodesAmount)]
