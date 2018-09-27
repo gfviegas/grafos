@@ -19,7 +19,3 @@ def generateValueMatrix(self):
 
     if (not self.file.closed):
         self.file.close()
-
-
-def printValueMatrix(self):
-    print(self.valueMatrix)

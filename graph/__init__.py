@@ -1,6 +1,6 @@
 class Graph(object):
     from .file import openFile, readNodesAmount
-    from .matrix import generateValueMatrix, printValueMatrix
+    from .matrix import generateValueMatrix
 
     """Graph Main class """
     def __init__(self, filePath):

@@ -11,7 +11,7 @@ def testFile():
 
 class TestFile(object):
     from ..file import openFile
-    from ..matrix import generateValueMatrix, printValueMatrix
+    from ..matrix import generateValueMatrix
 
     def readNodesAmount(self):
         self.nodesAmount2 = int(self.file.readline())
