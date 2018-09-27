@@ -11,14 +11,16 @@ docker-compose run runner bash
 pip install -e .
 ```
 
-## Instalar dependências
-```bash
-python setup.py develop
-```
-
 ### Pacotes externos
 Ao utilizar um pacote externo deve-se adicioná-lo no install_requires que está no setup.py
 
 
 ## Executando Testes
+```bash
+python setup.py test
+```
+
+### Em um container separado
+```bash
 docker-compose -p tests run --rm test
+```
