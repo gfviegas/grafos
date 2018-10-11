@@ -37,7 +37,7 @@ class TestFile(object):
         for line in self.valueMatrix:
             assert isinstance(line, numpy.ndarray)
             for column in line:
-                assert isinstance(column, numpy.int64)
+                assert isinstance(column, numpy.float)
 
     def test_mainDiagonalValid(self):
         self.nodesAmount = 5
