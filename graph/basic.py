@@ -19,9 +19,17 @@ def size(self):
     return self.edgesAmount() + self.nodesAmount
 
 
-def isConnected(self):
+def isConnected(self, matrix=None):
+    if matrix is None:
+        matrix = self.valueMatrix
+
     for line in range(0, self.nodesAmount):
-        degree = sum(v for v in self.valueMatrix[line] if v != 0)
+        degree = sum(v for v in matrix[line] if v != 0)
         if (degree <= 0):
             return False
     return True
+
+
+def isArticulation(self, node):
+    filteredMatrix = self.filteredNode(node)
+    return not(self.isConnected(filteredMatrix))

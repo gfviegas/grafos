@@ -16,6 +16,7 @@ def testGraphDisconnected():
     print(graphDis.isConnected())
     graphCon = Graph(path.join(dirname, 'connected.txt'))
     print(graphCon.isConnected())
+    print(graphCon.isArticulation(1))
 
 
 testGraphDisconnected()

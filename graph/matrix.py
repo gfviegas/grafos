@@ -29,3 +29,13 @@ def generateValueMatrix(self):
 
 def squaredMatrix(self):
     return (self.valueMatrix) @ (self.valueMatrix)
+
+
+# Retorna uma cópia da matriz sem um vértice e suas arestas
+def filteredNode(self, node):
+    filteredMatrix = numpy.copy(self.valueMatrix)
+    filteredMatrix[node] = numpy.zeros(self.nodesAmount)
+    for line in range(0, self.nodesAmount):
+        filteredMatrix[line][node - 1] = 0
+
+    return filteredMatrix
