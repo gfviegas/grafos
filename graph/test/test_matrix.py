@@ -1,5 +1,6 @@
 from os import path
 import pytest
+import numpy
 # from ..file import readNodesAmount as RNA
 
 
@@ -32,11 +33,11 @@ class TestFile(object):
     def test_valueMatrixValid(self):
         self.nodesAmount = 5
         self.generateValueMatrix()
-        assert isinstance(self.valueMatrix, list)
+        assert isinstance(self.valueMatrix, numpy.ndarray)
         for line in self.valueMatrix:
-            assert isinstance(line, list)
+            assert isinstance(line, numpy.ndarray)
             for column in line:
-                assert isinstance(column, int)
+                assert isinstance(column, numpy.int64)
 
     def test_mainDiagonalValid(self):
         self.nodesAmount = 5

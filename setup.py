@@ -16,7 +16,7 @@ setup(
     license='Apache',
     packages=['graph'],
     install_requires=[
-        'markdown',
+        'numpy',
         'pytest'
     ],
     setup_requires=["pytest-runner"],

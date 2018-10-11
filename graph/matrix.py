@@ -1,12 +1,19 @@
+import numpy
+
 def generateValueMatrix(self):
     self.openFile()
     self.readNodesAmount()
 
     if (not self.nodesAmount or self.nodesAmount <= 0):
         raise Exception('nodesAmountNotDefined')
+
     # Inicializa a matriz com 0s
-    self.valueMatrix = [[0 for x in range(self.nodesAmount)]
-                        for y in range(self.nodesAmount)]
+    # self.valueMatrix = [[0 for x in range(self.nodesAmount)]
+    #                     for y in range(self.nodesAmount)]
+    self.valueMatrix = numpy.zeros(
+        shape=(self.nodesAmount, self.nodesAmount),
+        dtype=int
+    )
 
     for line in self.file:
         lineValues = line.split(' ')
@@ -19,3 +26,7 @@ def generateValueMatrix(self):
 
     if (not self.file.closed):
         self.file.close()
+
+
+# def squaredMatrix(self):
+#     return self.valueMatrix @ self.valueMatrix
