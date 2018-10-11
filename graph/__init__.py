@@ -1,7 +1,7 @@
 class Graph(object):
     from .file import openFile, readNodesAmount
-    from .matrix import generateValueMatrix
-    from .basic import order, neighbors, degree, edgesAmount, size
+    from .matrix import generateValueMatrix, squaredMatrix
+    from .basic import order, neighbors, degree, edgesAmount, size, isConnected
 
     """Graph Main class """
     def __init__(self, filePath):

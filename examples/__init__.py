@@ -2,9 +2,20 @@ from graph import Graph
 from os import path
 
 dirname = path.dirname(__file__)
-filePath = path.join(dirname, 'teste.txt')
-graph1 = Graph(filePath)
-# print(graph1.valueMatrix)
-print(graph1.size())
-print(graph1.neighbors(0))
-print(graph1.degree(0))
+
+
+def testGraph1():
+    graph = Graph(path.join(dirname, 'teste.txt'))
+    print(graph.size())
+    print(graph.neighbors(0))
+    print(graph.degree(0))
+
+
+def testGraphDisconnected():
+    graphDis = Graph(path.join(dirname, 'disconnected.txt'))
+    print(graphDis.isConnected())
+    graphCon = Graph(path.join(dirname, 'connected.txt'))
+    print(graphCon.isConnected())
+
+
+testGraphDisconnected()

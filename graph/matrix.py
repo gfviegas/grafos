@@ -18,7 +18,7 @@ def generateValueMatrix(self):
         lineValues = line.split(' ')
         node1 = int(lineValues[0]) - 1
         node2 = int(lineValues[1]) - 1
-        edge = int(lineValues[2])
+        edge = float(lineValues[2])
 
         self.valueMatrix[node1][node2] = edge
         self.valueMatrix[node2][node1] = edge

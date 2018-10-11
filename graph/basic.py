@@ -17,3 +17,11 @@ def edgesAmount(self):
 
 def size(self):
     return self.edgesAmount() + self.nodesAmount
+
+
+def isConnected(self):
+    for line in range(0, self.nodesAmount):
+        degree = sum(v for v in self.valueMatrix[line] if v != 0)
+        if (degree <= 0):
+            return False
+    return True
