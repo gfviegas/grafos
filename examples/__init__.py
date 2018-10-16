@@ -13,10 +13,13 @@ def testGraph1():
 
 def testGraphDisconnected():
     graphDis = Graph(path.join(dirname, 'disconnected.txt'))
+    print(graphDis.depthFirstSearch())
     print(graphDis.isConnected())
     graphCon = Graph(path.join(dirname, 'connected.txt'))
+    print(graphCon.depthFirstSearch())
     print(graphCon.isConnected())
-    print(graphCon.isArticulation(1))
+    print(graphCon.isArticulation(0))
+    print(graphCon.isBridge('3-4'))
 
 
 testGraphDisconnected()

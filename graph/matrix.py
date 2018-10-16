@@ -1,4 +1,5 @@
 import numpy
+from .edges import translateEdgeNotation
 
 
 def generateValueMatrix(self):
@@ -31,11 +32,31 @@ def squaredMatrix(self):
     return (self.valueMatrix) @ (self.valueMatrix)
 
 
-# Retorna uma cópia da matriz sem um vértice e suas arestas
-def filteredNode(self, node):
+# Retorna uma cópia do grafo sem uma arestas
+def filteredEdge(self, edge):
+    from graph import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
-    filteredMatrix[node] = numpy.zeros(self.nodesAmount)
-    for line in range(0, self.nodesAmount):
-        filteredMatrix[line][node - 1] = 0
+    edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))
 
-    return filteredMatrix
+    filteredMatrix[edgeNodes[0]][edgeNodes[1]] = 0
+    filteredMatrix[edgeNodes[1]][edgeNodes[0]] = 0
+
+    graph = Graph()
+    graph.valueMatrix = filteredMatrix
+    graph.nodesAmount = graph.order()
+
+    return graph
+
+
+# Retorna uma cópia do grafo sem um vértice e suas arestas
+def filteredNode(self, node):
+    from graph import Graph
+    filteredMatrix = numpy.copy(self.valueMatrix)
+    filteredMatrix = numpy.delete(filteredMatrix, node, 0)
+    filteredMatrix = numpy.delete(filteredMatrix, node, 1)
+
+    graph = Graph()
+    graph.valueMatrix = filteredMatrix
+    graph.nodesAmount = graph.order()
+
+    return graph
