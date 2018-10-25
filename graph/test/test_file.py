@@ -28,7 +28,6 @@ class TestFile(object):
         self.filePath = 'inexistente'
         with pytest.raises(FileNotFoundError) as error:
             self.openFile()
-            print(error.value)
         self.filePath = None
 
     def test_openFileValid(self, requestFilePath):
