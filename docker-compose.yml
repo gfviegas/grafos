@@ -2,16 +2,16 @@ version: '2'
 
 services:
   runner:
-    image: python:3
+    build: .
     container_name: graph-runner
-    working_dir: /var/www/app
+    working_dir: /code
     command: bash -c ''
     volumes:
-      - ./:/var/www/app
+      - ./:/code
   test:
-    image: python:3
+    build: .
     container_name: graph-test
-    working_dir: /var/www/app
+    working_dir: /code
     command: bash -c 'python setup.py test'
     volumes:
-      - ./:/var/www/app
+      - ./:/code
