@@ -28,10 +28,6 @@ def generateValueMatrix(self):
         self.file.close()
 
 
-def squaredMatrix(self):
-    return (self.valueMatrix) @ (self.valueMatrix)
-
-
 # Retorna uma cópia do grafo sem uma arestas
 def filteredEdge(self, edge):
     from graph import Graph

@@ -1,6 +1,6 @@
 class Graph(object):
     from .file import openFile, readNodesAmount
-    from .matrix import generateValueMatrix, squaredMatrix, filteredNode, filteredEdge
+    from .matrix import generateValueMatrix, filteredNode, filteredEdge
     from .basic import order, neighbors, degree, edgesAmount, size, isConnected, isArticulation, isBridge
     from .search import depthSearch, depthFirstSearch
 
