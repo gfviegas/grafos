@@ -1,8 +1,37 @@
 def order(self):
+    """
+    Calcula e retorna a ordem do grafo.
+
+    Args:
+        None
+
+    Returns:
+        int: ordem (quantidade de vértices) do grafo
+
+    Raises:
+        None
+    """
+
     return len(self.valueMatrix)
 
 
 def neighbors(self, node):
+    """
+    Busca os vizinhos de um vértice
+
+    Itera a matriz de valores buscando quais vértices estão conectados a um
+    vértice fornecido, retornando a lista destes vizinhos.
+
+    Args:
+        node (int): índice de um vértice que terá seus vizinhos buscados
+
+    Returns:
+        list: lista de vértices vizinhos ao vértice fornecido
+
+    Raises:
+        None
+    """
+
     neighbors = []
     for node, edge in enumerate(self.valueMatrix[node]):
         if (edge != 0):

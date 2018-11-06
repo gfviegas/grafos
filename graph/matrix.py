@@ -3,6 +3,25 @@ from .edges import translateEdgeNotation
 
 
 def generateValueMatrix(self):
+    """
+    Preenche a matriz de valor a partir dos dados de um arquivo.
+
+    Lê o arquivo vinculado ao grafo e cria a sua matriz de valores. A matriz
+    terá tamanho MxM onde M é a quantidade de vértices, valor lido na primeira
+    linha do arquivo.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Raises:
+        Exception: nodesAmountNotDefined caso não tenha sido atribuído um valor
+        para o tamanho M de quantidade de vértices
+
+    """
+
     self.openFile()
     self.readNodesAmount()
 
@@ -28,8 +47,24 @@ def generateValueMatrix(self):
         self.file.close()
 
 
-# Retorna uma cópia do grafo sem uma arestas
 def filteredEdge(self, edge):
+    """
+    Clona o grafo com uma aresta removida do grafo original e o retorna.
+
+    A partir do grafo original, traduz a aresta que se deseja remover e
+    retorna uma nova instância de grafo sem a aresta solicitada.
+
+    Args:
+        edge (str): valor da aresta no formato texto "a-b"
+
+    Returns:
+        Graph: cópia do grafo original sem uma aresta
+
+    Raises:
+        None
+
+    """
+
     from graph import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
     edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))
@@ -44,8 +79,25 @@ def filteredEdge(self, edge):
     return graph
 
 
-# Retorna uma cópia do grafo sem um vértice e suas arestas
 def filteredNode(self, node):
+    """
+    Clona o grafo com um vértice removido do grafo original e o retorna.
+
+    A partir do grafo original, remove os valores do vértice que se deseja
+    remover e retorna uma nova instância de grafo sem o vértice solicitado e
+    suas arestas.
+
+    Args:
+        node (int): índice do vértice que se deseja remover
+
+    Returns:
+        Graph: cópia do grafo original sem um vértice e suas arestas
+
+    Raises:
+        None
+
+    """
+
     from graph import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
     filteredMatrix = numpy.delete(filteredMatrix, node, 0)
