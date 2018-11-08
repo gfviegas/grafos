@@ -22,5 +22,14 @@ def testGraphDisconnected():
     print(graphCon.isBridge('3-4'))
 
 
-testGraph1()
-testGraphDisconnected()
+def testGraphBipartite():
+    graphBip = Graph(path.join(dirname, 'bipartite.txt'))
+    print(graphBip.isBipartite())
+    graphNotBip = Graph(path.join(dirname, 'connected.txt'))
+    print(graphNotBip.isBipartite())
+
+
+
+# testGraph1()
+# testGraphDisconnected()
+testGraphBipartite()
