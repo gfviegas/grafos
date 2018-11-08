@@ -1,4 +1,5 @@
 from .edges import formatEdgeString
+import numpy
 
 
 def depthSearch(self, node, visitedNodes, visitedEdges, returnEdges):
@@ -58,3 +59,36 @@ def isBipartite(self, node=0):
             elif colorArray[v] == colorArray[u]:
                 return False
     return True
+
+
+def bellmanFord(self, node=0):
+    allEdges = self.getAllEdges()
+    # Inicializa um vetor de distancias, todas com valor de infinito
+    dt = numpy.full((self.nodesAmount), numpy.inf)
+    # A distancia do vértice de origem pra ele mesmo é 0
+    dt[node] = 0
+
+    # Antecessores
+    previous = numpy.full((self.nodesAmount), None)
+
+    info = {"distances": dt, "previous": previous, "negativeCycle": False}
+
+    for i in range(self.nodesAmount - 1):
+        for u, v, w in allEdges:
+            if dt[u] != numpy.inf and (dt[u] + w < dt[v]):
+                dt[v] = dt[u] + w
+                previous[v] = u
+
+    for u, v, w in allEdges:
+        if dt[u] != numpy.inf and (dt[u] + w < dt[v]):
+            info["distances"] = None
+            info["negativeCycle"] = True
+            return info
+
+    return info
+
+
+def hasNegativeCircuit(self):
+    info = self.bellmanFord()
+    print(info)
+    return info["negativeCycle"]

@@ -50,3 +50,14 @@ def translateEdgeNotation(edgeText):
     if not(re.match(r'(\d+)-(\d+)', edgeText)):
         raise ValueError('argument edgeText must be in format NUM-NUM')
     return numpy.array(edgeText.split('-'), dtype=int)
+
+
+def getAllEdges(self):
+    edges = []
+    for i in range(self.nodesAmount):
+        for j in range(self.nodesAmount):
+            if (self.valueMatrix[i][j] != 0):
+                edge = [min(i, j), max(i, j), self.valueMatrix[i][j]]
+                if edge not in edges:
+                    edges.append(edge)
+    return edges

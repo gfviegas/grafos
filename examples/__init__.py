@@ -29,7 +29,12 @@ def testGraphBipartite():
     print(graphNotBip.isBipartite())
 
 
+def testBellmanFord():
+    graph = Graph(path.join(dirname, 'bellman2.txt'))
+    print(graph.hasNegativeCircuit())
+
 
 # testGraph1()
 # testGraphDisconnected()
-testGraphBipartite()
+# testGraphBipartite()
+testBellmanFord()
