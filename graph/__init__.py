@@ -4,6 +4,7 @@ class Graph(object):
     from .edges import getAllEdges
     from .basic import order, neighbors, degree, edgesAmount, size, isConnected, isArticulation, isBridge
     from .search import depthSearch, depthFirstSearch, isBipartite, bellmanFord, hasNegativeCircuit
+    from .graphFeatures import isEulerian, hierholzer, searchHierholzer
 
     """Graph Main class """
     def __init__(self, filePath=None):
