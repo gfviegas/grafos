@@ -33,17 +33,21 @@ def testBellmanFord():
     graph = Graph(path.join(dirname, 'bellman2.txt'))
     print(graph.hasNegativeCircuit())
 
+
 def testEulerianGraph():
     graph = Graph(path.join(dirname, 'eulerian.txt')) # Or use notEulerian.txt
     print(graph.isEulerian())
+
 
 def testHierholzer():
     graph = Graph(path.join(dirname, 'eulerian.txt'))
     print(graph.hierholzer())
 
+
 def testKruskal():
     graph = Graph(path.join(dirname, 'kruskal.txt'))
     print(graph.kruskal())
+
 
 def testStableSet():
     graph = Graph(path.join(dirname, 'stableset.txt'))
