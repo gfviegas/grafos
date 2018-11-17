@@ -43,9 +43,11 @@ def testHierholzer():
 
 def testKruskal():
     graph = Graph(path.join(dirname, 'kruskal.txt'))
-    mst = graph.kruskal()
-    print(mst)
+    print(graph.kruskal())
 
+def testStableSet():
+    graph = Graph(path.join(dirname, 'stableset.txt'))
+    print(graph.findStableSet())
 
 # testGraph1()
 # testGraphDisconnected()
@@ -53,4 +55,5 @@ def testKruskal():
 # testBellmanFord()
 # testEulerianGraph()
 # testHierholzer()
-testKruskal()
+# testKruskal()
+testStableSet()

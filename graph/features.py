@@ -179,3 +179,52 @@ def kruskal(self):
     writeGraphOnFile(mstEdges, len(mstEdges), info, "generatedmst.txt")
 
     return mstEdges
+
+
+def findStableSet(self):
+    """
+    Determina o conjunto independente de um grafo não direcionado.
+
+    Heurística gulosa que ordena todos os vértices em ordem decrescente de grau.
+    Enquanto existirem vértices na lista, o vértice com maior grau é selecionado
+    e removido juntamente com seus vizinhos da lista. O vértice é então inserido
+    no conjunto independente e o número de independência é incrementado.
+
+    Args:
+        None
+
+    Returns:
+        results (dictionary): dicionário que contém a lista de vértices que
+        compõem o conjunto independente do grafo e um inteiro que representa
+        o número de independência. Retorna a lista vazia e o número de independência
+        igual à zero se o conjunto não existir.
+
+    Raises:
+        None
+    """
+
+    # Estruturas de dados necessárias:
+    results = {"stableSet": [], "independenceNumber": 0}; nodes = []
+
+    # Ordena os vértices em ordem não crescente de graus:
+    for i in range(self.nodesAmount): nodes.append([i, self.degree(i)])
+    sortedNodes = sorted(nodes, key = itemgetter(1), reverse=True)
+
+    # Constrói o conjunto independente:
+    while len(sortedNodes):
+        # Seleciona o vértice de maior grau e obtém seus vizinhos:
+        neigbourhood = []
+        node = sortedNodes[0]
+        neigbourhood = self.neighbors(node[0])
+
+        # Remove os vizinhos do vértice da lista:
+        for u in neigbourhood:
+            for v in sortedNodes:
+                if v[0] == u: sortedNodes.remove(v)
+
+        # Adiciona o vértice no conjunto e incrementa o número de independência:
+        results["stableSet"].append(node[0])
+        results["independenceNumber"] += 1
+        sortedNodes.remove(node)
+
+    return results
