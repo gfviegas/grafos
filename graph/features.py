@@ -1,4 +1,5 @@
 from .edges import formatEdgeString
+from .file import writeGraphOnFile
 from operator import itemgetter
 import itertools
 
@@ -136,8 +137,8 @@ def kruskal(self):
         None
 
     Returns:
-        mstEdges (list): lista de arestas que fazem parte da árvore geradora
-        mínima ou None caso ela não exista.
+        mstEdges (list): lista de vértices ligadas por arestas com seus pesos
+        que fazem parte da árvore geradora mínima ou None caso ela não exista.
 
     Raises:
         None
@@ -147,7 +148,7 @@ def kruskal(self):
     if not self.isConnected(): return None
 
     # Cria as estruturas de dados necessárias:
-    mstEdges = []; parent = []; rank = []
+    mstEdges = []; parent = []; rank = []; info = [0]
     allEdges = sorted(self.getAllEdges(), key = itemgetter(2))
 
     # Variáveis de índice para as arestas ordenadas (i) e para o mstEdges (e):
@@ -169,7 +170,12 @@ def kruskal(self):
         # no resultado e incrementa o índice e:
         if x != y:
             e = e + 1
-            mstEdges.append(formatEdgeString(u, v))
+            mstEdges.append([u, v, w])
+            info[0] += w
             self.kruskalUnion(parent, rank, x, y)
+
+    # Escreve a árvore geradora mínima em um arquivo externo, juntamente com a
+    # soma dos pesos:
+    writeGraphOnFile(mstEdges, len(mstEdges), info, "generatedmst.txt")
 
     return mstEdges

@@ -42,8 +42,10 @@ def testHierholzer():
     print(graph.hierholzer())
 
 def testKruskal():
-    graph = Graph(path.join(dirname, 'eulerian.txt'))
-    print(graph.kruskal())
+    graph = Graph(path.join(dirname, 'kruskal.txt'))
+    mst = graph.kruskal()
+    print(mst)
+
 
 # testGraph1()
 # testGraphDisconnected()

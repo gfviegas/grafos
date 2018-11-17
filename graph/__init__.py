@@ -1,5 +1,5 @@
 class Graph(object):
-    from .file import openFile, readNodesAmount
+    from .file import openFile, readNodesAmount, writeGraphOnFile
     from .matrix import generateValueMatrix, filteredNode, filteredEdge
     from .edges import getAllEdges
     from .basic import order, neighbors, degree, edgesAmount, size, isConnected, isEulerian, isArticulation, isBridge
