@@ -2,9 +2,9 @@ class Graph(object):
     from .file import openFile, readNodesAmount
     from .matrix import generateValueMatrix, filteredNode, filteredEdge
     from .edges import getAllEdges
-    from .basic import order, neighbors, degree, edgesAmount, size, isConnected, isArticulation, isBridge
+    from .basic import order, neighbors, degree, edgesAmount, size, isConnected, isEulerian, isArticulation, isBridge
     from .search import depthSearch, depthFirstSearch, isBipartite, bellmanFord, hasNegativeCircuit
-    from .graphFeatures import isEulerian, hierholzer, searchHierholzer
+    from .features import hierholzer, searchHierholzer, kruskal, kruskalUnion, kruskalFind
 
     """Graph Main class """
     def __init__(self, filePath=None):

@@ -59,6 +59,31 @@ def isConnected(self):
     return (len(info["connectedComponents"]) == 1)
 
 
+def isEulerian(self):
+    """
+    Verifica se o grafo é Euleriano.
+
+    Verifica se o grafo é conexo. Se sim, verifica se o grau de cada vértice
+    do grafo é par (Teorema de Euler). Em caso afirmativo para as duas afirmações,
+    conclui-se que o grafo é Euleriano.
+
+    Args:
+        None
+
+    Returns:
+        Boolean: True se o grafo for Euleriano; False em caso contrário
+
+    Raises:
+        None
+    """
+
+    if not self.isConnected(): return False
+
+    for v in range(self.nodesAmount):
+        if self.degree(v) % 2 != 0: return False
+
+    return True
+
 def isArticulation(self, node):
     connectedComponents = len((self.depthFirstSearch())["connectedComponents"])
     filteredGraph = self.filteredNode(node)
