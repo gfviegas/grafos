@@ -53,6 +53,11 @@ def testStableSet():
     graph = Graph(path.join(dirname, 'stableset.txt'))
     print(graph.findStableSet())
 
+
+def testBsf():
+    graph = Graph(path.join(dirname, 'stableset.txt'))
+    print (graph.breadthFirstSearch())
+
 # testGraph1()
 # testGraphDisconnected()
 # testGraphBipartite()
@@ -60,4 +65,5 @@ def testStableSet():
 # testEulerianGraph()
 # testHierholzer()
 # testKruskal()
-testStableSet()
+# testStableSet()
+testBsf()

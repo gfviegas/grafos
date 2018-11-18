@@ -2,6 +2,82 @@ from .edges import formatEdgeString
 import numpy
 
 
+def breadthSearch(self, node, visitedNodes, visitedEdges):
+    """
+    Algoritmo para realizar a busca em largura em um grafo.
+
+    Args:
+        node (int): nó de início da busca em largura.
+        visitedNodes (list): lista vazia a ser preenchida com os nós visitados.
+        visitedEdges (list): lista vazia a ser preenchida com as arestas visitadas.
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+
+    # Estruturas de dados necessárias:
+    bfs = []
+    queue = []
+    alrVisitedNodes = []
+
+    # Insere o nó inicial na 'fila' de nós da busca em largura:
+    queue.append(int(node))
+    alrVisitedNodes.append(int(node))
+
+    # Realiza a busca em largura para todos os nós na 'fila', enquanto
+    # existirem:
+    while queue:
+        n = queue.pop(0)
+        bfs.append(n)
+        for i in self.neighbors(n):
+            if i not in alrVisitedNodes:
+                queue.append(i)
+                alrVisitedNodes.append(i)
+                visitedEdges.append(formatEdgeString(n,i))
+
+    # A sequência de vértices visitados (bfs) é copiada para o respectivo parâmetro:
+    for n in bfs: visitedNodes.append(int(n))
+
+
+def breadthFirstSearch(self, node=0):
+    """
+    Gerencia as estruturas de dados responsáveis por armazenar os dados gerados
+    na busca em largura.
+
+    Args:
+        node (int): nó de início da busca em largura (default: 0).
+
+    Returns:
+        info (dictionary): dicionário que armazena três listas: visitedNodes,
+        que armazena a sequência de vértices visitados na busca; visitedEdges,
+        que armazena as arestas percorridas na sequência de visita do dos
+        vértices; e nftEdges (not from tree edges), que armazena as arestas que
+        não fazem parte da árvore de busca em largura.
+
+    Raises:
+        None
+    """
+
+    # Estruturas de dados necessárias:
+    edges = []
+    info = {"visitedNodes": [], "visitedEdges": [], "nftEdges": []}
+
+    # Seleciona todas as arestas do grafo, sem repetição:
+    for u in range(self.nodesAmount):
+        for n in self.neighbors(u):
+            edge = formatEdgeString(u,n)
+            if not edge in edges: edges.append(edge)
+
+    # Busca em largura:
+    self.breadthSearch(node, info["visitedNodes"], info["visitedEdges"])
+
+    info["nftEdges"] = list(filter(lambda n: n not in info["visitedEdges"], edges))
+    return info
+
+
 def depthSearch(self, node, visitedNodes, visitedEdges, returnEdges):
     visitedNodes.append(int(node))
     for w in self.neighbors(node):
