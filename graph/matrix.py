@@ -19,7 +19,6 @@ def generateValueMatrix(self):
     Raises:
         Exception: nodesAmountNotDefined caso não tenha sido atribuído um valor
         para o tamanho M de quantidade de vértices
-
     """
 
     self.openFile()
@@ -62,7 +61,6 @@ def filteredEdge(self, edge):
 
     Raises:
         None
-
     """
 
     from graph import Graph
@@ -95,7 +93,6 @@ def filteredNode(self, node):
 
     Raises:
         None
-
     """
 
     from graph import Graph

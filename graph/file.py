@@ -1,6 +1,21 @@
 import numpy
 
+
 def openFile(self):
+    """
+    Abre o arquivo externo que contém as informações do grafo para leitura.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Raises:
+        Exception: filePathNotDefined caso o nome do arquivo não seja do tipo
+        string.
+    """
+
     if (not hasattr(self, 'filePath') or not isinstance(self.filePath, str)):
         raise Exception('filePathNotDefined')
 
@@ -8,6 +23,22 @@ def openFile(self):
 
 
 def readNodesAmount(self):
+    """
+    Obtém o número total de nós do grafo.
+
+    Lê a primeira linha do arquivo (que representa o número de nós) e a associa
+    ao atributo nodesAmount do objeto.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+
     self.nodesAmount = int(self.file.readline())
 
 

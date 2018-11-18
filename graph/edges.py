@@ -42,7 +42,6 @@ def translateEdgeNotation(edgeText):
     Raises:
         TypeError: se o argumento fornecido não for uma string
         ValueError: se o argumento fornecido não estiver no formato "int-int"
-
     """
 
     if not(isinstance(edgeText, str)):
@@ -53,6 +52,23 @@ def translateEdgeNotation(edgeText):
 
 
 def getAllEdges(self):
+    """
+    Obtém todas as arestas do grafo.
+
+    Percorre a matriz de valores do grafo, inserindo todas as arestas do grafo
+    formatadas no padrão [node1, node2, weight] em uma lista.
+
+    Args:
+        None
+
+    Returns:
+        edges (list): lista contendo todas as arestas do grafo, formatadas e não
+        repetidas.
+
+    Raises:
+        None
+    """
+
     edges = []
     for i in range(self.nodesAmount):
         for j in range(self.nodesAmount):

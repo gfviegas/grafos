@@ -56,7 +56,7 @@ def testStableSet():
 
 def testBsf():
     graph = Graph(path.join(dirname, 'stableset.txt'))
-    print (graph.breadthFirstSearch())
+    print (graph.bellmanFord())
 
 # testGraph1()
 # testGraphDisconnected()
