@@ -30,19 +30,15 @@ def testAllGraphs():
         testInputGraph(i)
 
 
-def changeArc(a):
-    nodes = a.split('->')
-    nodes = list(map(lambda n: int(n) + 1, nodes))
-    return '{}->{}'.format(nodes[0], nodes[1])
-
-
 def testHurricane():
     hurricane = Graph(path.join(dirname, 'hurricane.txt'))
     print(hurricane.isEulerian())
-    circuit = hurricane.hierholzer()
-    circuit = list(map(changeArc, circuit))
-    print("\n Quantidade de arestas do grafo: {}. Quantidade do circuito: {}".format(hurricane.size() - hurricane.nodesAmount, len(circuit)))
-    print("\nCircuito: ", circuit)
+    circuit = list(map(lambda v: v + 1, hurricane.hierholzer()))
+    fiftySix = list(filter(lambda v: v == 56, circuit))
+    two = list(filter(lambda v: v == 2, circuit))
+    print("Circuito: ", circuit)
+    print("Quantidade de 56: ", fiftySix)
+    print("Quantidade de 2: ", two)
 
 
 # testAllGraphs()

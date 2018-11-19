@@ -32,12 +32,10 @@ def searchHierholzer(self, node, root, subpath, edgesTraversed):
 
     # Verifica se o vértice já foi visitado e o adiciona na lista do subcaminho:
     for n in neighbors:
-        edge1 = formatEdgeDestination(node, n)
-        edge2 = formatEdgeDestination(n, node)
-        if edge1 not in edgesTraversed or edge2 not in edgesTraversed:
-            edgesTraversed.append(edge1)
-            edgesTraversed.append(edge2)
-            # edgesTraversed[edge1] = edgesTraversed[edge2] = True
+        edge = formatEdgeDestination(node, n)
+        if edge not in edgesTraversed:
+            edgesTraversed.append(edge)
+            # edgesTraversed[edge] = True
             subpath.append(n)
             if n == root: return
             else: self.searchHierholzer(n, root, subpath, edgesTraversed)
@@ -79,13 +77,12 @@ def hierholzer(self, node=0):
         pointer += 1
 
     # Retorna a cadeia Euleriana fechada do grafo:
-    result = []
-    for i in range(0, len(chain) - 1):
-        edge = formatEdgeDestination(chain[i], chain[i + 1])
-        result.append(edge)
 
-    print(chain)
-    return result
+    print("\n", chain)
+    print("\nQuantidade de arestas: {}. Quantidade visitada: {} \n".format((self.size() - self.nodesAmount), len(list(traversed))))
+    print(list(traversed))
+
+    return chain
 
 
 def kruskalFind(self, parent, i):
