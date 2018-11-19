@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='graph',
-    version='0.1',
+    version='1.0',
     description='TP de Grafos, UFV Florestal',
     url='http://github.com/gfviegas/graph',
     author='Gustavo Viegas, Lucas Duarte',
