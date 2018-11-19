@@ -144,7 +144,9 @@ def isEulerian(self):
     if not self.isConnected(): return False
 
     for v in range(self.nodesAmount):
-        if self.degree(v) % 2 != 0: return False
+        if self.degree(v) % 2 != 0:
+            print(v, self.degree(v))
+            return False
 
     return True
 
@@ -189,7 +191,7 @@ def isBridge(self, edge):
     Raises:
         None
     """
-    
+
     connectedComponents = len((self.depthFirstSearch())["connectedComponents"])
     filteredGraph = self.filteredEdge(edge)
     filteredGraphConnectedComponents = len((filteredGraph.depthFirstSearch())["connectedComponents"])

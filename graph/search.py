@@ -252,5 +252,4 @@ def hasNegativeCircuit(self):
     """
 
     info = self.bellmanFord()
-    print(info)
     return info["negativeCycle"]

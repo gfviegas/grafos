@@ -4,66 +4,46 @@ from os import path
 dirname = path.dirname(__file__)
 
 
-def testGraph1():
-    graph = Graph(path.join(dirname, 'teste.txt'))
-    print(graph.size())
-    print(graph.neighbors(0))
-    print(graph.degree(0))
+def testInputGraph(i):
+    print("\n\n \t Carregando Grafo ", i, "\n\n")
+    graph = Graph(path.join(dirname, 'grafo{:d}.txt'.format(i)))
+
+    with open(path.join(dirname, '../output/dadosDoGrafo{:d}.txt'.format(i)), 'w+') as f:
+        f.write('Tamanho do Grafo: {}\n'.format(graph.size()))
+        f.write('Vizinhos do vértice 1: {}\n'.format(graph.neighbors(0)))
+        f.write('Grau do vértice 1: {}\n'.format(graph.degree(0)))
+        f.write('É bipartido: {}\n'.format(graph.isBipartite()))
+        f.write('É euleriano?: {}\n'.format(graph.isEulerian()))
+        f.write('Circuito Euleriano: {}\n'.format(graph.hierholzer()))
+        f.write('Resultado Árvore Geradora Minima: {}\n'.format(graph.kruskal()))
+        f.write('Busca de Conjunto Independente: {}\n'.format(graph.findStableSet()))
+        f.write('Busca em Profunidade: {}\n'.format(graph.depthFirstSearch()))
+        f.write('Busca em Largura: {}\n'.format(graph.bellmanFord()))
+        f.write('É conexo?: {}\n'.format(graph.isConnected()))
+        f.write('O vértice 1 é articulação?: {}\n'.format(graph.isArticulation(0)))
+        f.write('A aresta 3-4 é ponte?: {}\n'.format(graph.isBridge('3-4')))
+        f.write('Possui circuito negativo?: {}\n'.format(graph.hasNegativeCircuit()))
 
 
-def testGraphDisconnected():
-    graphDis = Graph(path.join(dirname, 'disconnected.txt'))
-    print(graphDis.depthFirstSearch())
-    print(graphDis.isConnected())
-    graphCon = Graph(path.join(dirname, 'connected.txt'))
-    print(graphCon.depthFirstSearch())
-    print(graphCon.isConnected())
-    print(graphCon.isArticulation(0))
-    print(graphCon.isBridge('3-4'))
+def testAllGraphs():
+    for i in range(1, 6):
+        testInputGraph(i)
 
 
-def testGraphBipartite():
-    graphBip = Graph(path.join(dirname, 'bipartite.txt'))
-    print(graphBip.isBipartite())
-    graphNotBip = Graph(path.join(dirname, 'connected.txt'))
-    print(graphNotBip.isBipartite())
+def changeArc(a):
+    nodes = a.split('->')
+    nodes = list(map(lambda n: int(n) + 1, nodes))
+    return '{}->{}'.format(nodes[0], nodes[1])
 
 
-def testBellmanFord():
-    graph = Graph(path.join(dirname, 'bellman2.txt'))
-    print(graph.hasNegativeCircuit())
+def testHurricane():
+    hurricane = Graph(path.join(dirname, 'hurricane.txt'))
+    print(hurricane.isEulerian())
+    circuit = hurricane.hierholzer()
+    circuit = list(map(changeArc, circuit))
+    print("\n Quantidade de arestas do grafo: {}. Quantidade do circuito: {}".format(hurricane.size() - hurricane.nodesAmount, len(circuit)))
+    print("\nCircuito: ", circuit)
 
 
-def testEulerianGraph():
-    graph = Graph(path.join(dirname, 'eulerian.txt')) # Or use notEulerian.txt
-    print(graph.isEulerian())
-
-
-def testHierholzer():
-    graph = Graph(path.join(dirname, 'eulerian.txt'))
-    print(graph.hierholzer())
-
-
-def testKruskal():
-    graph = Graph(path.join(dirname, 'kruskal.txt'))
-    print(graph.kruskal())
-
-
-def testStableSet():
-    graph = Graph(path.join(dirname, 'stableset.txt'))
-    print(graph.findStableSet())
-
-
-def testBsf():
-    graph = Graph(path.join(dirname, 'stableset.txt'))
-    print (graph.bellmanFord())
-
-# testGraph1()
-# testGraphDisconnected()
-# testGraphBipartite()
-# testBellmanFord()
-# testEulerianGraph()
-# testHierholzer()
-# testKruskal()
-# testStableSet()
-testBsf()
+# testAllGraphs()
+testHurricane()

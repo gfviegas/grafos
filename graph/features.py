@@ -1,6 +1,8 @@
-from .edges import formatEdgeString
+from .edges import formatEdgeDestination
 from .file import writeGraphOnFile
 from operator import itemgetter
+from random import randint
+
 import itertools
 
 
@@ -30,10 +32,12 @@ def searchHierholzer(self, node, root, subpath, edgesTraversed):
 
     # Verifica se o vértice já foi visitado e o adiciona na lista do subcaminho:
     for n in neighbors:
-        edge1 = formatEdgeString(node, n)
-        edge2 = formatEdgeString(n, node)
+        edge1 = formatEdgeDestination(node, n)
+        edge2 = formatEdgeDestination(n, node)
         if edge1 not in edgesTraversed or edge2 not in edgesTraversed:
-            edgesTraversed[edge1] = edgesTraversed[edge2] = True
+            edgesTraversed.append(edge1)
+            edgesTraversed.append(edge2)
+            # edgesTraversed[edge1] = edgesTraversed[edge2] = True
             subpath.append(n)
             if n == root: return
             else: self.searchHierholzer(n, root, subpath, edgesTraversed)
@@ -63,18 +67,25 @@ def hierholzer(self, node=0):
 
     # Cria as estruturas de dados necessárias:
     chain = [node]
-    traversed = {}
+    traversed = []
     pointer = 0
 
     # Percorre o grafo em busca de cadeias fechadas:
     while (len(traversed) // 2) < self.edgesAmount() and pointer < len(chain):
         subpath = []
         self.searchHierholzer(chain[pointer], chain[pointer], subpath, traversed)
-        if len(subpath) != 0: chain = list(itertools.chain(chain[:pointer+1], subpath, chain[pointer+1:]))
+        if len(subpath) != 0:
+            chain = list(itertools.chain(chain[:pointer+1], subpath, chain[pointer+1:]))
         pointer += 1
 
     # Retorna a cadeia Euleriana fechada do grafo:
-    return chain
+    result = []
+    for i in range(0, len(chain) - 1):
+        edge = formatEdgeDestination(chain[i], chain[i + 1])
+        result.append(edge)
+
+    print(chain)
+    return result
 
 
 def kruskalFind(self, parent, i):
@@ -176,7 +187,8 @@ def kruskal(self):
 
     # Escreve a árvore geradora mínima em um arquivo externo, juntamente com a
     # soma dos pesos:
-    writeGraphOnFile(mstEdges, len(mstEdges), info, "generatedmst.txt")
+    fileName = 'output/generatedmst{:d}_{:d}.txt'.format(randint(0, 99999), randint(0, 99999))
+    writeGraphOnFile(mstEdges, len(mstEdges), info, fileName)
 
     return mstEdges
 
