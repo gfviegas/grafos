@@ -1,0 +1,4 @@
+Tamanho do Grafo: 98558
+Vizinhos do vértice 1: [1, 9999]
+Grau do vértice 1: 2
+É bipartido: False

@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from graph import Graph
 from os import path
+import gc
 
 dirname = path.dirname(__file__)
 
@@ -8,6 +12,7 @@ def testInputGraph(i):
     print("\n\n \t Carregando Grafo ", i, "\n\n")
     graph = Graph(path.join(dirname, 'grafo{:d}.txt'.format(i)))
 
+    print('\tTAMANHO: {}\n'.format(graph.size()))
     with open(path.join(dirname, '../output/dadosDoGrafo{:d}.txt'.format(i)), 'w+') as f:
         f.write('Tamanho do Grafo: {}\n'.format(graph.size()))
         f.write('Vizinhos do vértice 1: {}\n'.format(graph.neighbors(0)))
@@ -26,24 +31,16 @@ def testInputGraph(i):
 
 
 def testAllGraphs():
-    for i in range(1, 6):
+    for i in [1, 3, 2, 4, 5]:
         testInputGraph(i)
-
-
-def changeArc(a):
-    nodes = a.split('->')
-    nodes = list(map(lambda n: int(n) + 1, nodes))
-    return '{}->{}'.format(nodes[0], nodes[1])
+        gc.collect()
 
 
 def testHurricane():
     hurricane = Graph(path.join(dirname, 'hurricane.txt'))
-    print(hurricane.isEulerian())
-    circuit = hurricane.hierholzer()
-    circuit = list(map(changeArc, circuit))
-    print("\n Quantidade de arestas do grafo: {}. Quantidade do circuito: {}".format(hurricane.size() - hurricane.nodesAmount, len(circuit)))
-    print("\nCircuito: ", circuit)
+    tree = hurricane.kruskal()
+    print("\nÁrvore: ", tree)
 
 
-# testAllGraphs()
-testHurricane()
+testAllGraphs()
+# testHurricane()

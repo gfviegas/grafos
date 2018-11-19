@@ -1,7 +1,9 @@
+from memoize import Memoize
 import numpy
 import re
 
 
+@Memoize
 def formatEdgeString(node1, node2):
     """
     Gera uma string que representa um aresta.
@@ -25,6 +27,7 @@ def formatEdgeString(node1, node2):
     return '{:d}-{:d}'.format(min(node1, node2), max(node1, node2))
 
 
+@Memoize
 def formatEdgeDestination(node1, node2):
     """
     Gera uma string que representa um arco node1->node2
@@ -48,6 +51,7 @@ def formatEdgeDestination(node1, node2):
     return '{:d}->{:d}'.format(node1, node2)
 
 
+@Memoize
 def translateEdgeNotation(edgeText):
     """
     Interpreta uma aresta em formato de texto e retorna os seus vértices.

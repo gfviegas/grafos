@@ -1,11 +1,12 @@
+from memoize import Memoize
 from .edges import formatEdgeDestination
 from .file import writeGraphOnFile
 from operator import itemgetter
 from random import randint
-
 import itertools
 
 
+@Memoize
 def searchHierholzer(self, node, root, subpath, edgesTraversed):
     """
     Busca por todos os vértices não visitados a partir de node.
@@ -35,9 +36,7 @@ def searchHierholzer(self, node, root, subpath, edgesTraversed):
         edge1 = formatEdgeDestination(node, n)
         edge2 = formatEdgeDestination(n, node)
         if edge1 not in edgesTraversed or edge2 not in edgesTraversed:
-            edgesTraversed.append(edge1)
-            edgesTraversed.append(edge2)
-            # edgesTraversed[edge1] = edgesTraversed[edge2] = True
+            edgesTraversed[edge1] = edgesTraversed[edge2] = True
             subpath.append(n)
             if n == root: return
             else: self.searchHierholzer(n, root, subpath, edgesTraversed)
@@ -67,25 +66,18 @@ def hierholzer(self, node=0):
 
     # Cria as estruturas de dados necessárias:
     chain = [node]
-    traversed = []
+    traversed = {}
     pointer = 0
 
     # Percorre o grafo em busca de cadeias fechadas:
     while (len(traversed) // 2) < self.edgesAmount() and pointer < len(chain):
         subpath = []
         self.searchHierholzer(chain[pointer], chain[pointer], subpath, traversed)
-        if len(subpath) != 0:
-            chain = list(itertools.chain(chain[:pointer+1], subpath, chain[pointer+1:]))
+        if len(subpath) != 0: chain = list(itertools.chain(chain[:pointer+1], subpath, chain[pointer+1:]))
         pointer += 1
 
     # Retorna a cadeia Euleriana fechada do grafo:
-    result = []
-    for i in range(0, len(chain) - 1):
-        edge = formatEdgeDestination(chain[i], chain[i + 1])
-        result.append(edge)
-
-    print(chain)
-    return result
+    return chain
 
 
 def kruskalFind(self, parent, i):
@@ -219,8 +211,10 @@ def findStableSet(self):
     results = {"stableSet": [], "independenceNumber": 0}; nodes = []
 
     # Ordena os vértices em ordem não crescente de graus:
-    for i in range(self.nodesAmount): nodes.append([i, self.degree(i)])
-    sortedNodes = sorted(nodes, key = itemgetter(1), reverse=True)
+    for i in range(self.nodesAmount):
+        nodes.append([i, self.degree(i)])
+
+    sortedNodes = sorted(nodes, key=itemgetter(1), reverse=True)
 
     # Constrói o conjunto independente:
     while len(sortedNodes):

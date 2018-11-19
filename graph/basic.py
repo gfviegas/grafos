@@ -145,7 +145,6 @@ def isEulerian(self):
 
     for v in range(self.nodesAmount):
         if self.degree(v) % 2 != 0:
-            print(v, self.degree(v))
             return False
 
     return True
