@@ -2,3 +2,5 @@ Tamanho do Grafo: 519
 Vizinhos do vértice 1: [1, 99]
 Grau do vértice 1: 2
 É bipartido: False
+É euleriano?: False
+Circuito Euleriano: None
