@@ -1,6 +1,15 @@
 version: '2'
 
 services:
+  sphinx:
+    build:
+        context: .
+        dockerfile: Dockerfile.sphinx
+    container_name: graph-docs
+    working_dir: /code
+    command: bash -c 'make html && make latex && cd build/latex && make'
+    volumes:
+      - ./:/code
   runner:
     build: .
     container_name: graph-runner

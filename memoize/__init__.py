@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 class Memoize:
     def __init__(self, fn):
         self.fn = fn

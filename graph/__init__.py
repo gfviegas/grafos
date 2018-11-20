@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 class Graph(object):
     from .file import openFile, readNodesAmount, writeGraphOnFile
     from .matrix import generateValueMatrix, filteredNode, filteredEdge

@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def order(self):
     """
     Calcula e retorna a ordem do grafo.

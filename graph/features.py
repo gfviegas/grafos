@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from memoize import Memoize
 from .edges import formatEdgeDestination
 from .file import writeGraphOnFile
