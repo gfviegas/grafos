@@ -1,0 +1,18 @@
+Documentação - GraphTool
+============================
+Sua biblioteca para grafos em Python!
+
+Autores
+--------
+Gustavo Viegas e Lucas Duarte
+
+
+Conteúdo:
+---------
+.. toctree::
+    :maxdepth: 3
+
+    instructions
+    application
+    code
+    indices

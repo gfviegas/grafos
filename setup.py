@@ -17,7 +17,9 @@ setup(
     packages=['graph', 'memoize'],
     install_requires=[
         'numpy',
-        'pytest'
+        'pytest',
+        'sphinx_rtd_theme',
+        'sphinxcontrib-fulltoc'
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],

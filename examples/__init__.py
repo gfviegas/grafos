@@ -42,5 +42,5 @@ def testHurricane():
     print("\nÁrvore: ", tree)
 
 
-testAllGraphs()
+# testAllGraphs()
 # testHurricane()
