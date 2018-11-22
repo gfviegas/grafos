@@ -82,6 +82,22 @@ def translateEdgeNotation(edgeText):
 
 
 def hasNegativeEdge(self):
+    """
+    Verifica se existe alguma aresta com valor negativo.
+
+    Percorre todas as arestas do grafo em busca de alguma com valor negativo.
+
+    Args:
+        None
+
+    Returns:
+        Boolean: True se possuir aresta negativa; False em caso contrário
+
+    Raises:
+        None
+
+    """
+
     for i in range(self.nodesAmount):
         for j in range(self.nodesAmount):
             if (self.valueMatrix[i][j] < 0):
