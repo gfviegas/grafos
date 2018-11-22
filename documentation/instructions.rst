@@ -40,6 +40,7 @@ Executando Testes
    python setup.py test
 
 Em um container separado
+
 .. code-block:: bash
 
    docker-compose -p tests run --rm test
