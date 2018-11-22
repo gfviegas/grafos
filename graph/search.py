@@ -211,7 +211,12 @@ def bellmanFord(self, node=0):
         None
     """
 
-    allEdges = self.getAllEdges()
+    # Trata o grafo como um grafo direcionado, se tiver alguma aresta negativa.
+    if (self.hasNegativeEdge()):
+        allEdges = self.getAllArcs()
+    else:
+        allEdges = self.getAllEdges()
+
     # Inicializa um vetor de distancias, todas com valor de infinito
     dt = numpy.full((self.nodesAmount), numpy.inf)
     # A distancia do vértice de origem pra ele mesmo é 0

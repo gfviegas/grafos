@@ -44,3 +44,5 @@ def testHurricane():
 
 # testAllGraphs()
 # testHurricane()
+negative = Graph(path.join(dirname, 'negativeCycle.txt'))
+print(negative.bellmanFord(0))

@@ -81,6 +81,14 @@ def translateEdgeNotation(edgeText):
     return numpy.array(edgeText.split('-'), dtype=int)
 
 
+def hasNegativeEdge(self):
+    for i in range(self.nodesAmount):
+        for j in range(self.nodesAmount):
+            if (self.valueMatrix[i][j] < 0):
+                return True
+    return False
+
+
 def getAllEdges(self):
     """
     Obtém todas as arestas do grafo.
@@ -107,3 +115,33 @@ def getAllEdges(self):
                 if edge not in edges:
                     edges.append(edge)
     return edges
+
+
+def getAllArcs(self):
+    """
+    Obtém todos os arcos do grafo.
+
+    Percorre a matriz de valores do grafo, inserindo todas os arcos do grafo
+    formatadas no padrão [node1, node2, weight] em uma lista.
+    Lembrando que uma aresta == 2 arcos de mesmo valor em
+    direção opostas
+
+    Args:
+        None
+
+    Returns:
+        edges (list): lista contendo todos os arcos do grafo, formatados e não
+        repetidas.
+
+    Raises:
+        None
+    """
+
+    arcs = []
+    for i in range(self.nodesAmount):
+        for j in range(self.nodesAmount):
+            if (self.valueMatrix[i][j] != 0):
+                arc = [i, j, self.valueMatrix[i][j]]
+                if arc not in arcs:
+                    arcs.append(arc)
+    return arcs
