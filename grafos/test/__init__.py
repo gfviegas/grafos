@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 class TestFile(object):
-    import graph
+    import grafos
 
     attributes = [
         "nodesAmount",

@@ -66,7 +66,7 @@ def filteredEdge(self, edge):
         None
     """
 
-    from graph import Graph
+    from grafos import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
     # edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))
     edgeNodes = list(map(lambda e: e, translateEdgeNotation(edge)))
@@ -98,7 +98,7 @@ def filteredNode(self, node):
         None
     """
 
-    from graph import Graph
+    from grafos import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
     filteredMatrix = numpy.delete(filteredMatrix, node, 0)
     filteredMatrix = numpy.delete(filteredMatrix, node, 1)

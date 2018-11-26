@@ -7,9 +7,9 @@ def readme():
 
 
 setup(
-    name='graph',
+    name='grafos',
     version='1.0',
-    description='TP de Grafos, UFV Florestal',
+    description='Ferramenta de algoritmos de Teoria e Modelagem de Grafos',
     url='http://github.com/gfviegas/graph',
     author='Gustavo Viegas, Lucas Duarte',
     author_email='gustavo.viegas@ufv.br lucas.duarte@ufv.br',
@@ -25,4 +25,5 @@ setup(
     tests_require=["pytest"],
     include_package_data=True,
     zip_safe=False
+    # download_url="https://github.com/gfviegas/graph"
 )

@@ -49,13 +49,13 @@ class TestFile(object):
             assert self.valueMatrix[idx][idx] == 0
 
     def test_filteredNode(self, requestFilePath):
-        from graph import Graph
+        from grafos import Graph
         graphTested = Graph(requestFilePath)
         filtered = graphTested.filteredNode(0)
         assert (filtered.order() < 5)
 
     def test_filteredEdge(self, requestFilePath):
-        from graph import Graph
+        from grafos import Graph
         graphTested = Graph(requestFilePath)
         filtered = graphTested.filteredEdge("1-2")
         assert (len(graphTested.neighbors(0)) > len(filtered.neighbors(0)))

@@ -1,6 +1,8 @@
 # graph
-Python Graph Library 0.1
+Python Graph Library
 
+
+# Desenvolvimento
 ## Subir container e acessá-lo
 ```bash
 docker-compose run runner bash
