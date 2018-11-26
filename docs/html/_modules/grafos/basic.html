@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>grafos.basic &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code.html">Documentação do Código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Código do módulo</a> &raquo;</li>
+        
+      <li>grafos.basic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Código fonte para grafos.basic</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<div class="viewcode-block" id="order"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.order">[documentos]</a><span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula e retorna a ordem do grafo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: ordem (quantidade de vértices) do grafo</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="neighbors"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.neighbors">[documentos]</a><span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Busca os vizinhos de um vértice.</span>
+
+<span class="sd">    Itera a matriz de valores buscando quais vértices estão conectados a um</span>
+<span class="sd">    vértice fornecido, retornando a lista destes vizinhos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): índice de um vértice que terá seus vizinhos buscados</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: lista de vértices vizinhos ao vértice fornecido</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">[</span><span class="n">node</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">edge</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">neighbors</span></div>
+
+    <span class="c1"># return list(filter(lambda k, v: v != 0, self.valueMatrix[node]))</span>
+
+
+<div class="viewcode-block" id="degree"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.degree">[documentos]</a><span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula e retorna o grau de um vértice.</span>
+
+<span class="sd">    Percorre a matriz de valores do grafo no índice do nó em questão, incrementando</span>
+<span class="sd">    1 a cada peso diferente de 0 encontrado.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): índice do nó cujo grau será calculado.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: somatório que representa o grau do nó.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="edgesAmount"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.edgesAmount">[documentos]</a><span class="k">def</span> <span class="nf">edgesAmount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula e retorna o total de arestas presentes no grafo.</span>
+
+<span class="sd">    Utiliza o Handshaking Lemma para calcular o total de arestas do grafo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: total de arestas presentes no grafo.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">totalDegrees</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">totalDegrees</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Utilizando handshaking lemma</span></div>
+
+
+<div class="viewcode-block" id="size"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.size">[documentos]</a><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula e retorna o tamanho do grafo.</span>
+
+<span class="sd">    O tamanho do grafo é dado através da soma do total de arestas com o total</span>
+<span class="sd">    de vértices.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: valor que representa o tamanho do grafo.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edgesAmount</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span></div>
+
+
+<div class="viewcode-block" id="isConnected"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.isConnected">[documentos]</a><span class="k">def</span> <span class="nf">isConnected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica a conexidade do grafo.</span>
+
+<span class="sd">    Realiza a busca em profundidade no grafo para obter o número de componentes</span>
+<span class="sd">    conexas.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True se o número de componentes conexas for 1; False se o número</span>
+<span class="sd">        for maior.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depthFirstSearch</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="isEulerian"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.isEulerian">[documentos]</a><span class="k">def</span> <span class="nf">isEulerian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica se o grafo é Euleriano.</span>
+
+<span class="sd">    Verifica se o grafo é conexo. Se sim, verifica se o grau de cada vértice</span>
+<span class="sd">    do grafo é par (Teorema de Euler). Em caso afirmativo para as duas afirmações,</span>
+<span class="sd">    conclui-se que o grafo é Euleriano.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Boolean: True se o grafo for Euleriano; False em caso contrário</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isConnected</span><span class="p">():</span> <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="isArticulation"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.isArticulation">[documentos]</a><span class="k">def</span> <span class="nf">isArticulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica se um nó é uma articulação.</span>
+
+<span class="sd">    Percorre as componentes conexas do grafo, filtrando as componentes conexas</span>
+<span class="sd">    em detrimento do nó. Se o número de componentes filtradas for maior do que</span>
+<span class="sd">    o número de componentes originais, então o nó é uma articulação.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó a ser verificado como articulação.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True se o nó em questão for uma articulação; False caso contrário.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">connectedComponents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">depthFirstSearch</span><span class="p">())[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">])</span>
+    <span class="n">filteredGraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filteredNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="n">filteredGraphConnectedComponents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="n">filteredGraph</span><span class="o">.</span><span class="n">depthFirstSearch</span><span class="p">())[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">filteredGraphConnectedComponents</span> <span class="o">&gt;</span> <span class="n">connectedComponents</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="isBridge"><a class="viewcode-back" href="../../grafos.basic.html#grafos.basic.isBridge">[documentos]</a><span class="k">def</span> <span class="nf">isBridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica se uma aresta é uma ponte.</span>
+
+<span class="sd">    Percorre as componentes conexas do grafo, filtrando as componentes conexas</span>
+<span class="sd">    em detrimento da aresta. Se o número de componentes filtradas for maior do</span>
+<span class="sd">    que o número de componentes originais, então a aresta é uma ponte.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        edge (string): aresta a ser verificada como ponte.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True se o nó em questão for uma ponte; False caso contrário.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">connectedComponents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">depthFirstSearch</span><span class="p">())[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">])</span>
+    <span class="n">filteredGraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filteredEdge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+    <span class="n">filteredGraphConnectedComponents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="n">filteredGraph</span><span class="o">.</span><span class="n">depthFirstSearch</span><span class="p">())[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">filteredGraphConnectedComponents</span> <span class="o">&gt;</span> <span class="n">connectedComponents</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>grafos.matrix &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code.html">Documentação do Código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Código do módulo</a> &raquo;</li>
+        
+      <li>grafos.matrix</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Código fonte para grafos.matrix</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">.edges</span> <span class="k">import</span> <span class="n">translateEdgeNotation</span>
+
+
+<div class="viewcode-block" id="generateValueMatrix"><a class="viewcode-back" href="../../grafos.matrix.html#grafos.matrix.generateValueMatrix">[documentos]</a><span class="k">def</span> <span class="nf">generateValueMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Preenche a matriz de valor a partir dos dados de um arquivo.</span>
+
+<span class="sd">    Lê o arquivo vinculado ao grafo e cria a sua matriz de valores. A matriz</span>
+<span class="sd">    terá tamanho MxM onde M é a quantidade de vértices, valor lido na primeira</span>
+<span class="sd">    linha do arquivo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Exception: nodesAmountNotDefined caso não tenha sido atribuído um valor</span>
+<span class="sd">        para o tamanho M de quantidade de vértices</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">openFile</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">readNodesAmount</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;nodesAmountNotDefined&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Inicializa a matriz com 0s</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+        <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">),</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">:</span>
+        <span class="n">lineValues</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">node1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lineValues</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">node2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lineValues</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">edge</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lineValues</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">[</span><span class="n">node1</span><span class="p">][</span><span class="n">node2</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">[</span><span class="n">node2</span><span class="p">][</span><span class="n">node1</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">closed</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="filteredEdge"><a class="viewcode-back" href="../../grafos.matrix.html#grafos.matrix.filteredEdge">[documentos]</a><span class="k">def</span> <span class="nf">filteredEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clona o grafo com uma aresta removida do grafo original e o retorna.</span>
+
+<span class="sd">    A partir do grafo original, traduz a aresta que se deseja remover e</span>
+<span class="sd">    retorna uma nova instância de grafo sem a aresta solicitada.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        edge (str): valor da aresta no formato texto &quot;a-b&quot;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Graph: cópia do grafo original sem uma aresta</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">grafos</span> <span class="k">import</span> <span class="n">Graph</span>
+    <span class="n">filteredMatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">)</span>
+    <span class="c1"># edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))</span>
+    <span class="n">edgeNodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="n">translateEdgeNotation</span><span class="p">(</span><span class="n">edge</span><span class="p">)))</span>
+    <span class="n">filteredMatrix</span><span class="p">[</span><span class="n">edgeNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edgeNodes</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">filteredMatrix</span><span class="p">[</span><span class="n">edgeNodes</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">edgeNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">valueMatrix</span> <span class="o">=</span> <span class="n">filteredMatrix</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">nodesAmount</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">graph</span></div>
+
+
+<div class="viewcode-block" id="filteredNode"><a class="viewcode-back" href="../../grafos.matrix.html#grafos.matrix.filteredNode">[documentos]</a><span class="k">def</span> <span class="nf">filteredNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clona o grafo com um vértice removido do grafo original e o retorna.</span>
+
+<span class="sd">    A partir do grafo original, remove os valores do vértice que se deseja</span>
+<span class="sd">    remover e retorna uma nova instância de grafo sem o vértice solicitado e</span>
+<span class="sd">    suas arestas.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): índice do vértice que se deseja remover</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Graph: cópia do grafo original sem um vértice e suas arestas</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">grafos</span> <span class="k">import</span> <span class="n">Graph</span>
+    <span class="n">filteredMatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">)</span>
+    <span class="n">filteredMatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">filteredMatrix</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">filteredMatrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">filteredMatrix</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">valueMatrix</span> <span class="o">=</span> <span class="n">filteredMatrix</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">nodesAmount</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">graph</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

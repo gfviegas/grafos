@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>grafos.search &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code.html">Documentação do Código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Código do módulo</a> &raquo;</li>
+        
+      <li>grafos.search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Código fonte para grafos.search</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">.edges</span> <span class="k">import</span> <span class="n">formatEdgeString</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+
+<div class="viewcode-block" id="breadthSearch"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.breadthSearch">[documentos]</a><span class="k">def</span> <span class="nf">breadthSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">visitedNodes</span><span class="p">,</span> <span class="n">visitedEdges</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Algoritmo para realizar a busca em largura em um grafo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó de início da busca em largura.</span>
+<span class="sd">        visitedNodes (list): lista vazia a ser preenchida com os nós visitados.</span>
+<span class="sd">        visitedEdges (list): lista vazia a ser preenchida com as arestas visitadas.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Estruturas de dados necessárias:</span>
+    <span class="n">bfs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">alrVisitedNodes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Insere o nó inicial na &#39;fila&#39; de nós da busca em largura:</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+    <span class="n">alrVisitedNodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+    <span class="c1"># Realiza a busca em largura para todos os nós na &#39;fila&#39;, enquanto</span>
+    <span class="c1"># existirem:</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">bfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">alrVisitedNodes</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">alrVisitedNodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">visitedEdges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatEdgeString</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="c1"># A sequência de vértices visitados (bfs) é copiada para o respectivo parâmetro:</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">bfs</span><span class="p">:</span> <span class="n">visitedNodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="breadthFirstSearch"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.breadthFirstSearch">[documentos]</a><span class="k">def</span> <span class="nf">breadthFirstSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gerencia as estruturas de dados responsáveis por armazenar os dados gerados</span>
+<span class="sd">    na busca em largura.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó de início da busca em largura (default: 0).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        info (dictionary): dicionário que armazena três listas: visitedNodes,</span>
+<span class="sd">        que armazena a sequência de vértices visitados na busca; visitedEdges,</span>
+<span class="sd">        que armazena as arestas percorridas na sequência de visitas dos nós;</span>
+<span class="sd">        e nftEdges (not from tree edges), que armazena as arestas que</span>
+<span class="sd">        não fazem parte da árvore de busca em largura.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Estruturas de dados necessárias:</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;visitedNodes&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;visitedEdges&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;nftEdges&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+    <span class="c1"># Seleciona todas as arestas do grafo, sem repetição:</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+            <span class="n">edge</span> <span class="o">=</span> <span class="n">formatEdgeString</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span> <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+
+    <span class="c1"># Busca em largura:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">breadthSearch</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;visitedNodes&quot;</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;visitedEdges&quot;</span><span class="p">])</span>
+
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;nftEdges&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;visitedEdges&quot;</span><span class="p">],</span> <span class="n">edges</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">info</span></div>
+
+
+<div class="viewcode-block" id="depthSearch"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.depthSearch">[documentos]</a><span class="k">def</span> <span class="nf">depthSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">visitedNodes</span><span class="p">,</span> <span class="n">visitedEdges</span><span class="p">,</span> <span class="n">returnEdges</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Algoritmo para realizar a busca em profundidade em um grafo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó de início da busca em largura.</span>
+<span class="sd">        visitedNodes (list): lista a ser preenchida com os nós visitados.</span>
+<span class="sd">        visitedEdges (list): lista a ser preenchida com as arestas visitadas.</span>
+<span class="sd">        returnEdges (list): lista a ser preenchida com as arestas de retorno.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">visitedNodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+        <span class="n">edge</span> <span class="o">=</span> <span class="n">formatEdgeString</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">edge</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visitedEdges</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">node</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">returnEdges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+            <span class="n">visitedEdges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visitedNodes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">depthSearch</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">visitedNodes</span><span class="p">,</span> <span class="n">visitedEdges</span><span class="p">,</span> <span class="n">returnEdges</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="depthFirstSearch"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.depthFirstSearch">[documentos]</a><span class="k">def</span> <span class="nf">depthFirstSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gerencia as estruturas de dados responsáveis por armazenar os dados gerados</span>
+<span class="sd">    na busca em profundidade.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó de início da busca em profunidade (default: 0).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        info (dictionary): dicionário que armazena três listas: returnEdges,</span>
+<span class="sd">        que armazena as arestas de retorno da árvore de busca em profundidade;</span>
+<span class="sd">        visitedEdges, que armazena as arestas percorridas na sequência de visita</span>
+<span class="sd">        dos nós; e connectedComponents, que armazena listas que contém os vértices</span>
+<span class="sd">        que compõem as componentes conexas do grafo.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;returnEdges&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;visitedEdges&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;connectedComponents&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">visitedNodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lastVisitedNodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">notVisitedNodes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depthSearch</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">visitedNodes</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;visitedEdges&quot;</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;returnEdges&quot;</span><span class="p">])</span>
+        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;connectedComponents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lastVisitedNodes</span><span class="p">,</span> <span class="n">visitedNodes</span><span class="p">)))</span>
+        <span class="n">lastVisitedNodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">visitedNodes</span><span class="p">)</span>
+        <span class="n">notVisitedNodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visitedNodes</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">notVisitedNodes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">break</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">notVisitedNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">info</span></div>
+
+
+<div class="viewcode-block" id="isBipartite"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.isBipartite">[documentos]</a><span class="k">def</span> <span class="nf">isBipartite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica se um grafo é bipartido através de coloração.</span>
+
+<span class="sd">    Define duas cores válidas e colore os grafos presentes na fila de nós,</span>
+<span class="sd">    enquanto existirem. Se um nó de uma cor estiver ligado a um nó cuja cor</span>
+<span class="sd">    é igual, o grafo não poderá ser considerado bipartido.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó inicial para o percurso do grafo (default: 0)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True se o grafo for bipartido; False caso contrário.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Sem cor = -1, Primeira cor = 1, Segunda cor = 0</span>
+    <span class="n">colorArray</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+
+    <span class="c1"># O primeiro vértice recebe a primeira cor</span>
+    <span class="n">colorArray</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="c1"># Enquanto tiver vértices na fila...</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valueMatrix</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+            <span class="c1"># Se o vértice vizinho não tiver colorido, colore-o</span>
+            <span class="k">if</span> <span class="n">colorArray</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">colorArray</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">colorArray</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># e o adicione na fila</span>
+            <span class="k">elif</span> <span class="n">colorArray</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="n">colorArray</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="bellmanFord"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.bellmanFord">[documentos]</a><span class="k">def</span> <span class="nf">bellmanFord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtém o caminho mínimo do grafo, considerando o peso das arestas como indicador.</span>
+
+<span class="sd">    Utiliza o algoritmo de Bellman Ford, que permite que as arestas possuam pesos</span>
+<span class="sd">    negativos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        node (int): nó inicial para o percurso do grafo (default: 0)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        info (dictionary): Estrutura de dados que armazena dois numpy arrays (</span>
+<span class="sd">        dt e previous) e um boolean (negativeCycle), que indicam a distância</span>
+<span class="sd">        percorrida no caminho mínimo, os nós anteriores e a presença de um ciclo</span>
+<span class="sd">        negativo, respectivamente.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Trata o grafo como um grafo direcionado, se tiver alguma aresta negativa.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hasNegativeEdge</span><span class="p">()):</span>
+        <span class="n">allEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAllArcs</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">allEdges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getAllEdges</span><span class="p">()</span>
+
+    <span class="c1"># Inicializa um vetor de distancias, todas com valor de infinito</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="c1"># A distancia do vértice de origem pra ele mesmo é 0</span>
+    <span class="n">dt</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Antecessores</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;distances&quot;</span><span class="p">:</span> <span class="n">dt</span><span class="p">,</span> <span class="s2">&quot;previous&quot;</span><span class="p">:</span> <span class="n">previous</span><span class="p">,</span> <span class="s2">&quot;negativeCycle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodesAmount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">allEdges</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dt</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">inf</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">dt</span><span class="p">[</span><span class="n">v</span><span class="p">]):</span>
+                <span class="n">dt</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span>
+                <span class="n">previous</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">allEdges</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dt</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">inf</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">dt</span><span class="p">[</span><span class="n">v</span><span class="p">]):</span>
+            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;distances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;negativeCycle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="n">info</span>
+
+    <span class="k">return</span> <span class="n">info</span></div>
+
+
+<div class="viewcode-block" id="hasNegativeCircuit"><a class="viewcode-back" href="../../grafos.search.html#grafos.search.hasNegativeCircuit">[documentos]</a><span class="k">def</span> <span class="nf">hasNegativeCircuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica a presença de um circuito negativo no grafo.</span>
+
+<span class="sd">    Utiliza o campo &quot;negativeCycle&quot; obtido através do conjunto de informações</span>
+<span class="sd">    geradas pela execução do algoritmo de Bellman Ford no grafo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True se o grafo possui um circuito negativo; False caso contrário.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bellmanFord</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;negativeCycle&quot;</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pesquisas - search &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Indices" href="indices.html" />
+    <link rel="prev" title="Matriz - matrix" href="grafos.matrix.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="code.html">Documentação do Código</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grafos.basic.html">Operações Básicas - basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grafos.edges.html">Arestas - edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grafos.file.html">Arquivos - file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grafos.matrix.html">Matriz - matrix</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pesquisas - search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="code.html">Documentação do Código</a> &raquo;</li>
+        
+      <li>Pesquisas - search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/grafos.search.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-grafos.search">
+<span id="pesquisas-search"></span><h1>Pesquisas - search<a class="headerlink" href="#module-grafos.search" title="Link permanente para este título">¶</a></h1>
+<dl class="function">
+<dt id="grafos.search.bellmanFord">
+<code class="descclassname">grafos.search.</code><code class="descname">bellmanFord</code><span class="sig-paren">(</span><em>self</em>, <em>node=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#bellmanFord"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.bellmanFord" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Obtém o caminho mínimo do grafo, considerando o peso das arestas como indicador.</p>
+<p>Utiliza o algoritmo de Bellman Ford, que permite que as arestas possuam pesos
+negativos.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó inicial para o percurso do grafo (default: 0)</dd>
+<dt>Returns:</dt>
+<dd>info (dictionary): Estrutura de dados que armazena dois numpy arrays (
+dt e previous) e um boolean (negativeCycle), que indicam a distância
+percorrida no caminho mínimo, os nós anteriores e a presença de um ciclo
+negativo, respectivamente.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.breadthFirstSearch">
+<code class="descclassname">grafos.search.</code><code class="descname">breadthFirstSearch</code><span class="sig-paren">(</span><em>self</em>, <em>node=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#breadthFirstSearch"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.breadthFirstSearch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Gerencia as estruturas de dados responsáveis por armazenar os dados gerados
+na busca em largura.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó de início da busca em largura (default: 0).</dd>
+<dt>Returns:</dt>
+<dd>info (dictionary): dicionário que armazena três listas: visitedNodes,
+que armazena a sequência de vértices visitados na busca; visitedEdges,
+que armazena as arestas percorridas na sequência de visitas dos nós;
+e nftEdges (not from tree edges), que armazena as arestas que
+não fazem parte da árvore de busca em largura.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.breadthSearch">
+<code class="descclassname">grafos.search.</code><code class="descname">breadthSearch</code><span class="sig-paren">(</span><em>self</em>, <em>node</em>, <em>visitedNodes</em>, <em>visitedEdges</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#breadthSearch"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.breadthSearch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Algoritmo para realizar a busca em largura em um grafo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó de início da busca em largura.
+visitedNodes (list): lista vazia a ser preenchida com os nós visitados.
+visitedEdges (list): lista vazia a ser preenchida com as arestas visitadas.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.depthFirstSearch">
+<code class="descclassname">grafos.search.</code><code class="descname">depthFirstSearch</code><span class="sig-paren">(</span><em>self</em>, <em>node=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#depthFirstSearch"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.depthFirstSearch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Gerencia as estruturas de dados responsáveis por armazenar os dados gerados
+na busca em profundidade.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó de início da busca em profunidade (default: 0).</dd>
+<dt>Returns:</dt>
+<dd>info (dictionary): dicionário que armazena três listas: returnEdges,
+que armazena as arestas de retorno da árvore de busca em profundidade;
+visitedEdges, que armazena as arestas percorridas na sequência de visita
+dos nós; e connectedComponents, que armazena listas que contém os vértices
+que compõem as componentes conexas do grafo.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.depthSearch">
+<code class="descclassname">grafos.search.</code><code class="descname">depthSearch</code><span class="sig-paren">(</span><em>self</em>, <em>node</em>, <em>visitedNodes</em>, <em>visitedEdges</em>, <em>returnEdges</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#depthSearch"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.depthSearch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Algoritmo para realizar a busca em profundidade em um grafo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó de início da busca em largura.
+visitedNodes (list): lista a ser preenchida com os nós visitados.
+visitedEdges (list): lista a ser preenchida com as arestas visitadas.
+returnEdges (list): lista a ser preenchida com as arestas de retorno.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.hasNegativeCircuit">
+<code class="descclassname">grafos.search.</code><code class="descname">hasNegativeCircuit</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#hasNegativeCircuit"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.hasNegativeCircuit" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica a presença de um circuito negativo no grafo.</p>
+<p>Utiliza o campo “negativeCycle” obtido através do conjunto de informações
+geradas pela execução do algoritmo de Bellman Ford no grafo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>boolean: True se o grafo possui um circuito negativo; False caso contrário.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.search.isBipartite">
+<code class="descclassname">grafos.search.</code><code class="descname">isBipartite</code><span class="sig-paren">(</span><em>self</em>, <em>node=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/search.html#isBipartite"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.search.isBipartite" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica se um grafo é bipartido através de coloração.</p>
+<p>Define duas cores válidas e colore os grafos presentes na fila de nós,
+enquanto existirem. Se um nó de uma cor estiver ligado a um nó cuja cor
+é igual, o grafo não poderá ser considerado bipartido.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó inicial para o percurso do grafo (default: 0)</dd>
+<dt>Returns:</dt>
+<dd>boolean: True se o grafo for bipartido; False caso contrário.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="indices.html" class="btn btn-neutral float-right" title="Indices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="grafos.matrix.html" class="btn btn-neutral" title="Matriz - matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GraphTool'
+project = 'Grafos'
 copyright = '2018, Gustavo Viegas, Lucas Duarte'
 author = 'Gustavo Viegas, Lucas Duarte'
 
 # The short X.Y version
-version = ''
+version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = '1.'
+release = '1.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -107,7 +107,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'GraphTooldoc'
+htmlhelp_basename = 'Grafos'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -134,7 +134,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'GraphTool.tex', 'GraphTool Documentation',
+    (master_doc, 'Grafos.tex', 'Grafos Documentation',
      'Gustavo Viegas, Lucas Duarte', 'manual'),
 ]
 
@@ -144,7 +144,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'graphtool', 'GraphTool Documentation',
+    (master_doc, 'grafos', 'Grafos Documentation',
      [author], 1)
 ]
 
@@ -155,8 +155,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'GraphTool', 'GraphTool Documentation',
-     author, 'GraphTool', 'One line description of project.',
+    (master_doc, 'Grafos', 'Grafos Documentation',
+     author, 'Grafos', 'One line description of project.',
      'Miscellaneous'),
 ]
 

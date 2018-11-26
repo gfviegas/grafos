@@ -1,7 +1,7 @@
 Operações Básicas - basic
 -------------------------
 
-.. automodule:: graph.basic
+.. automodule:: grafos.basic
    :members:
    :undoc-members:
    :show-inheritance:

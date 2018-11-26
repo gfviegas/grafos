@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Operações Básicas - basic &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Documentação do Código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Operações Básicas - basic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graph.basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-grafos.basic">
+<span id="operacoes-basicas-basic"></span><h1>Operações Básicas - basic<a class="headerlink" href="#module-grafos.basic" title="Link permanente para este título">¶</a></h1>
+<dl class="function">
+<dt id="grafos.basic.degree">
+<code class="descclassname">grafos.basic.</code><code class="descname">degree</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#degree"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.degree" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula e retorna o grau de um vértice.</p>
+<p>Percorre a matriz de valores do grafo no índice do nó em questão, incrementando
+1 a cada peso diferente de 0 encontrado.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): índice do nó cujo grau será calculado.</dd>
+<dt>Returns:</dt>
+<dd>int: somatório que representa o grau do nó.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.edgesAmount">
+<code class="descclassname">grafos.basic.</code><code class="descname">edgesAmount</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#edgesAmount"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.edgesAmount" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula e retorna o total de arestas presentes no grafo.</p>
+<p>Utiliza o Handshaking Lemma para calcular o total de arestas do grafo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>int: total de arestas presentes no grafo.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.isArticulation">
+<code class="descclassname">grafos.basic.</code><code class="descname">isArticulation</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#isArticulation"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.isArticulation" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica se um nó é uma articulação.</p>
+<p>Percorre as componentes conexas do grafo, filtrando as componentes conexas
+em detrimento do nó. Se o número de componentes filtradas for maior do que
+o número de componentes originais, então o nó é uma articulação.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): nó a ser verificado como articulação.</dd>
+<dt>Returns:</dt>
+<dd>boolean: True se o nó em questão for uma articulação; False caso contrário.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.isBridge">
+<code class="descclassname">grafos.basic.</code><code class="descname">isBridge</code><span class="sig-paren">(</span><em>self</em>, <em>edge</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#isBridge"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.isBridge" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica se uma aresta é uma ponte.</p>
+<p>Percorre as componentes conexas do grafo, filtrando as componentes conexas
+em detrimento da aresta. Se o número de componentes filtradas for maior do
+que o número de componentes originais, então a aresta é uma ponte.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>edge (string): aresta a ser verificada como ponte.</dd>
+<dt>Returns:</dt>
+<dd>boolean: True se o nó em questão for uma ponte; False caso contrário.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.isConnected">
+<code class="descclassname">grafos.basic.</code><code class="descname">isConnected</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#isConnected"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.isConnected" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica a conexidade do grafo.</p>
+<p>Realiza a busca em profundidade no grafo para obter o número de componentes
+conexas.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>boolean: True se o número de componentes conexas for 1; False se o número
+for maior.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.isEulerian">
+<code class="descclassname">grafos.basic.</code><code class="descname">isEulerian</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#isEulerian"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.isEulerian" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica se o grafo é Euleriano.</p>
+<p>Verifica se o grafo é conexo. Se sim, verifica se o grau de cada vértice
+do grafo é par (Teorema de Euler). Em caso afirmativo para as duas afirmações,
+conclui-se que o grafo é Euleriano.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>Boolean: True se o grafo for Euleriano; False em caso contrário</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.neighbors">
+<code class="descclassname">grafos.basic.</code><code class="descname">neighbors</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#neighbors"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.neighbors" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Busca os vizinhos de um vértice.</p>
+<p>Itera a matriz de valores buscando quais vértices estão conectados a um
+vértice fornecido, retornando a lista destes vizinhos.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): índice de um vértice que terá seus vizinhos buscados</dd>
+<dt>Returns:</dt>
+<dd>list: lista de vértices vizinhos ao vértice fornecido</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.order">
+<code class="descclassname">grafos.basic.</code><code class="descname">order</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#order"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.order" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula e retorna a ordem do grafo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>int: ordem (quantidade de vértices) do grafo</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.basic.size">
+<code class="descclassname">grafos.basic.</code><code class="descname">size</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/basic.html#size"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.basic.size" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula e retorna o tamanho do grafo.</p>
+<p>O tamanho do grafo é dado através da soma do total de arestas com o total
+de vértices.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>int: valor que representa o tamanho do grafo.</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

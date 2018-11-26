@@ -1,7 +1,7 @@
-Arquivos - file
+Arestas - edges
 ---------------
 
-.. automodule:: graph.file
+.. automodule:: grafos.edges
    :members:
    :undoc-members:
    :show-inheritance:

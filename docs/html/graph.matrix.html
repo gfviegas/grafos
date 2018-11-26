@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Matriz - matrix &mdash; documentação Grafos 1.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Grafos
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instruções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Aplicação na Vida Real</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Documentação do Código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Grafos</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Matriz - matrix</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graph.matrix.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-grafos.matrix">
+<span id="matriz-matrix"></span><h1>Matriz - matrix<a class="headerlink" href="#module-grafos.matrix" title="Link permanente para este título">¶</a></h1>
+<dl class="function">
+<dt id="grafos.matrix.filteredEdge">
+<code class="descclassname">grafos.matrix.</code><code class="descname">filteredEdge</code><span class="sig-paren">(</span><em>self</em>, <em>edge</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/matrix.html#filteredEdge"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.matrix.filteredEdge" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Clona o grafo com uma aresta removida do grafo original e o retorna.</p>
+<p>A partir do grafo original, traduz a aresta que se deseja remover e
+retorna uma nova instância de grafo sem a aresta solicitada.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>edge (str): valor da aresta no formato texto “a-b”</dd>
+<dt>Returns:</dt>
+<dd>Graph: cópia do grafo original sem uma aresta</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.matrix.filteredNode">
+<code class="descclassname">grafos.matrix.</code><code class="descname">filteredNode</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/matrix.html#filteredNode"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.matrix.filteredNode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Clona o grafo com um vértice removido do grafo original e o retorna.</p>
+<p>A partir do grafo original, remove os valores do vértice que se deseja
+remover e retorna uma nova instância de grafo sem o vértice solicitado e
+suas arestas.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>node (int): índice do vértice que se deseja remover</dd>
+<dt>Returns:</dt>
+<dd>Graph: cópia do grafo original sem um vértice e suas arestas</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="grafos.matrix.generateValueMatrix">
+<code class="descclassname">grafos.matrix.</code><code class="descname">generateValueMatrix</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grafos/matrix.html#generateValueMatrix"><span class="viewcode-link">[código fonte]</span></a><a class="headerlink" href="#grafos.matrix.generateValueMatrix" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Preenche a matriz de valor a partir dos dados de um arquivo.</p>
+<p>Lê o arquivo vinculado ao grafo e cria a sua matriz de valores. A matriz
+terá tamanho MxM onde M é a quantidade de vértices, valor lido na primeira
+linha do arquivo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+<dt>Raises:</dt>
+<dd>Exception: nodesAmountNotDefined caso não tenha sido atribuído um valor
+para o tamanho M de quantidade de vértices</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gustavo Viegas, Lucas Duarte
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

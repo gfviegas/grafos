@@ -1,7 +1,7 @@
 Arestas - edges
 ---------------
 
-.. automodule:: graph.edges
+.. automodule:: grafos.edges
    :members:
    :undoc-members:
    :show-inheritance:
