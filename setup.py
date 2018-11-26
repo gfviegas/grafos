@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='grafos',
-    version='1.0',
+    version='1.0.1',
     description='Ferramenta de algoritmos de Teoria e Modelagem de Grafos',
     url='http://github.com/gfviegas/grafos',
     author='Gustavo Viegas, Lucas Duarte',
