@@ -57,7 +57,7 @@ class TestFile(object):
     def test_filteredEdge(self, requestFilePath):
         from grafos import Graph
         graphTested = Graph(requestFilePath)
-        filtered = graphTested.filteredEdge("1-2")
+        filtered = graphTested.filteredEdge("0-1")
         assert (len(graphTested.neighbors(0)) > len(filtered.neighbors(0)))
         assert (1 not in filtered.neighbors(0))
         assert (filtered.valueMatrix[0][1] == 0.0)

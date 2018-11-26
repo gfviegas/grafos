@@ -10,11 +10,11 @@ setup(
     name='grafos',
     version='1.0',
     description='Ferramenta de algoritmos de Teoria e Modelagem de Grafos',
-    url='http://github.com/gfviegas/graph',
+    url='http://github.com/gfviegas/grafos',
     author='Gustavo Viegas, Lucas Duarte',
     author_email='gustavo.viegas@ufv.br lucas.duarte@ufv.br',
     license='Apache',
-    packages=['graph', 'memoize'],
+    packages=['grafos', 'memoize'],
     install_requires=[
         'numpy',
         'pytest',
@@ -24,6 +24,6 @@ setup(
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],
     include_package_data=True,
-    zip_safe=False
-    # download_url="https://github.com/gfviegas/graph"
+    zip_safe=False,
+    download_url="https://github.com/gfviegas/grafos/archive/1.0.tar.gz"
 )

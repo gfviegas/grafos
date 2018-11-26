@@ -5,21 +5,21 @@ services:
     build:
         context: .
         dockerfile: Dockerfile.sphinx
-    container_name: graph-docs
+    container_name: grafos-docs
     working_dir: /code
     command: bash -c 'make html && make latex && cd build/latex && make'
     volumes:
       - ./:/code
   runner:
     build: .
-    container_name: graph-runner
+    container_name: grafos-runner
     working_dir: /code
     command: bash -c ''
     volumes:
       - ./:/code
   test:
     build: .
-    container_name: graph-test
+    container_name: grafos-test
     working_dir: /code
     command: bash -c 'python setup.py test'
     volumes:
