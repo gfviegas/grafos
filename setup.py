@@ -12,7 +12,7 @@ setup(
     description='Ferramenta de algoritmos de Teoria e Modelagem de Grafos',
     url='http://github.com/gfviegas/grafos',
     author='Gustavo Viegas, Lucas Duarte',
-    author_email='gustavo.viegas@ufv.br lucas.duarte@ufv.br',
+    author_email='gustavo.viegas@ufv.br, lucas.duarte@ufv.br',
     license='Apache',
     packages=['grafos', 'memoize'],
     install_requires=[
