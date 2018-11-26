@@ -68,8 +68,8 @@ def filteredEdge(self, edge):
 
     from graph import Graph
     filteredMatrix = numpy.copy(self.valueMatrix)
-    edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))
-
+    # edgeNodes = list(map(lambda e: e - 1, translateEdgeNotation(edge)))
+    edgeNodes = list(map(lambda e: e, translateEdgeNotation(edge)))
     filteredMatrix[edgeNodes[0]][edgeNodes[1]] = 0
     filteredMatrix[edgeNodes[1]][edgeNodes[0]] = 0
 

@@ -42,7 +42,36 @@ def testHurricane():
     print("\nÁrvore: ", tree)
 
 
-# testAllGraphs()
-# testHurricane()
-negative = Graph(path.join(dirname, 'negativeCycle.txt'))
-print(negative.bellmanFord(0))
+grafo1 = Graph(path.join(dirname, 'grafo1.txt'))
+ap1 = Graph(path.join(dirname, 'ap1.txt'))
+ap2 = Graph(path.join(dirname, 'ap2.txt'))
+
+# print(grafo1.order())
+# print(grafo1.size())
+# print(grafo1.neighbors(9))
+# print(grafo1.degree(9))
+# print(grafo1.bellmanFord(0)["distances"][9])
+# print(grafo1.bellmanFord(0))
+# print(grafo1.breadthFirstSearch())
+# print(grafo1.depthFirstSearch())
+# print(grafo1.kruskal())
+
+
+# print(ap1.isArticulation(2))
+# print(ap1.isBridge('2-3'))
+# print(ap1.isBridge('0-1'))
+# print(len(ap1.depthFirstSearch()["connectedComponents"]))
+# print(ap1.hasNegativeCircuit())
+# print(ap1.findStableSet())
+
+print(ap2.isEulerian())
+print(ap2.isBipartite())
+
+
+
+
+# print(ap1.isArticulation(1))
+# print(ap1.isArticulation(3))
+# print(ap1.kruskal())
+# print(ap1.isBipartite())
+# print(ap2.isBipartite())
